@@ -1,5 +1,6 @@
 const client = require("./client.js");
 const {createRobot} = require("./robots.js")
+const {createCustomer} = require("./customer.js")
 
 const dropTables = async () => {
   try {
@@ -65,6 +66,7 @@ const createTables = async () => {
     await createTables();
     console.log('Tables dropped and created successfully');
     await createRobot('Karen', 'CHUM3000', 'Chum Bucket', 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.giantbomb.com%2Fa%2Fuploads%2Fscale_small%2F17%2F174460%2F3461523-2475428144-latest.png&tbnid=tdEsNfimIEBAAM&vet=12ahUKEwj1tuyl6vaCAxXlkokEHcroDjcQMygDegQIARBn..i&imgrefurl=https%3A%2F%2Fwww.giantbomb.com%2Fkaren-plankton%2F3005-50123%2F&docid=H-FCjskHN6KiyM&w=340&h=640&q=plankton%27s%20wife&ved=2ahUKEwj1tuyl6vaCAxXlkokEHcroDjcQMygDegQIARBn', '1', 'true', '1800-01-01')
+    await createCustomer('Eugene')
     client.end(); 
   } catch (err) {
     console.error('Error:', err);

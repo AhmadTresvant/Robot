@@ -10,14 +10,12 @@ const createRobot = async (
   release
 ) => {
   try {
-    const query = `
+    const { rows: [robot] } = await client.query( `
       INSERT INTO robots (name, model, company, imgUrl, warranty_months, is_child_safe, release_date)
       VALUES ($1, $2, $3, $4, $5, $6, $7)
       RETURNING *;
-    `;
-    const values = [name, model, company, imgUrl, warranty, safe, release];
-
-    const { rows: [robot] } = await client.query(query, values);
+    `, [name, model, company, imgUrl, warranty, safe, release])
+   
     return robot;
   } catch (err) {
     console.error('Error creating robot:', err);
@@ -28,4 +26,5 @@ const createRobot = async (
 module.exports = {
   createRobot,
 };
+
 
